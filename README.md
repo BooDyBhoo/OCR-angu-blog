@@ -1,4 +1,5 @@
-Blog
+Blog for OCR
+
 This project was generated with Angular CLI version 7.3.17 and nodeJs V8.16.1 (constraint)
 
 Development server
