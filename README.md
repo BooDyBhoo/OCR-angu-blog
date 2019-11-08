@@ -2,6 +2,9 @@ Blog for OCR
 
 This project was generated with Angular CLI version 7.3.17 and nodeJs V8.16.1 (constraint)
 
+Install Angular CLI 
+npm install -g  @angular/cli@7
+
 Development server
 Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
