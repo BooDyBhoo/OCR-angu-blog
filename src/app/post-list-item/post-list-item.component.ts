@@ -7,30 +7,19 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PostListItemComponent implements OnInit {
 
-  @Input() postTitle: string;
-  @Input() postContent: string;
-  @Input() postLoveIts: number;
-  @Input() postCreatedAt: Date;
+  @Input() posts: any;
 
   constructor() { }
 
-  onVote(vote) {
-    var actualVote = this.postLoveIts;
+  onVote(id: number, vote: string) {
     if (vote === 'up') {
-      this.postLoveIts ++;
+      this.posts[id].loveIts ++;
     } else if (vote === 'down') {
-      this.postLoveIts --;
+      this.posts[id].loveIts --;
     } else  {
       console.log('no vote');
-    };
-
-    console.log('Actual Vote=' + this.postLoveIts + ' Action=' + vote);
-
-    //return this.postLoveIts;
-  }
-
-  getLoveIt(){
-    return this.postLoveIts;
+    }
+    console.log(this.posts[id].loveIts);
   }
 
   ngOnInit() {

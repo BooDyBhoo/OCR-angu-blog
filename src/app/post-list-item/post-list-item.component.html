@@ -1,21 +1,22 @@
-<li [ngClass]="{'list-group-item': true,
-                'list-group-item-success': getLoveIt() > 0,
-                'list-group-item-danger': getLoveIt() < 0}">
+<li *ngFor="let post of posts, let i =index "
+    [ngClass]="{'list-group-item': true,
+                'list-group-item-success': post.loveIts > 0,
+                'list-group-item-danger': post.loveIts < 0}">
   <div class="row">
     <div class="col-xs-8">
-      <h1>{{ postTitle }}</h1>
+      <h1>{{ post.title }}</h1>
     </div>
     <div class="col-xs-4">
-      <h4 class="text-right">{{ postCreatedAt | date: 'short'}}</h4>
+      <h4 class="text-right">{{ post.created_at | date: 'short'}}</h4>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p>{{ postContent }}</p>
+      <p>{{ post.content }}</p>
     </div>
   </div>
   <div class="btn-toolbar">
-    <button type="button" class="btn btn-success" (click)="onVote('up')">I love it</button>
-    <button type="button" class="btn btn-danger" (click)="onVote('down')">I don't love it</button>
+    <button type="button" class="btn btn-success" (click)="onVote(i,'up')">I love it</button>
+    <button type="button" class="btn btn-danger" (click)="onVote(i,'down')">I don't love it</button>
   </div>
 </li>
