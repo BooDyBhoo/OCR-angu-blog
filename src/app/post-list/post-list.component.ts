@@ -10,7 +10,8 @@ import {BlogService} from '../services/blog.service';
 })
 export class PostListComponent implements OnInit, OnDestroy {
 
-  @Input() posts: any;
+  posts: Post[];
+  postSubscription: Subscription;
 
   constructor(private blogService: BlogService) { }
 
