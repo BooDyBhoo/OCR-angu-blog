@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as firebase from 'firebase';
+
 
 
 @Component({
@@ -10,26 +12,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = ' my angu-blog OCR exercice ';
 
-  posts = [
-    {
-      title: 'Mon premier post',
-      content: 'Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.',
-      loveIts: 1,
-      created_at: new Date("2019-11-06 19:47")
-    },
-    {
-      title: 'Mon deuxième post',
-      content: 'Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.',
-      loveIts: 0,
-      created_at: new Date("2019-11-07 13:07")
-    },
-    {
-      title: 'Mon dernier post',
-      content: 'Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.',
-      loveIts: -1,
-      created_at: new Date("2019-11-08 17:27")
-    },
-  ];
+  constructor() {
+   const firebaseConfig = {
+      apiKey: 'AIzaSyA0_9pwrAid4QtfoEez7__dJBqkGI43c98',
+      authDomain: 'boodyblog-ocr.firebaseapp.com',
+      databaseURL: 'https://boodyblog-ocr.firebaseio.com',
+      projectId: 'boodyblog-ocr',
+      storageBucket: 'boodyblog-ocr.appspot.com',
+      messagingSenderId: '17848938130',
+      appId: '1:17848938130:web:dfd899478defd8debc804b'
+    };
+    // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+  }
 
 }
 

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>Enregistrer un nouveau post</h2>
+    <form [formGroup]="postForm" (ngSubmit)="onSavePost()">
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input type="text" id="title"
+               class="form-control" formControlName="title">
+        <div *ngIf="titleToValidate.errors && postForm.invalid" class="alert alert-warning">
+          <div *ngIf="titleToValidate.errors?.minlength">
+            Le titre n'est pas assez long (min 10 char)
+          </div>
+          <div *ngIf="titleToValidate.errors.required">
+            Le titre est obligatoire !
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="content" [ngClass]="{'text-danger': postForm.get('content').value.length > 500}">
+          Contenu ({{postForm.get('content').value.length}}/500)
+        </label>
+        <textarea id="content"
+                  class="form-control" formControlName="content"></textarea>
+        <div *ngIf="contentToValidate.errors && postForm.invalid" class="alert alert-warning">
+          <div *ngIf="contentToValidate.errors?.maxlength">
+            Le contenu est trop long (actuellement {{postForm.get('content').value.length}} max 500 char)
+          </div>
+          <div *ngIf="contentToValidate.errors.required">
+            Le contenu est obligatoire !
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <button class="btn btn-primary btn-block" [disabled]="postForm.invalid"
+                type="submit">Enregistrer
+        </button>
+        <button class="btn btn-danger btn-block" type="button" [routerLink]="['/posts']">Annuler
+        </button>
+      </div>
+
+
+    </form>
+  </div>
+</div>

@@ -1,8 +1,27 @@
-<ul class="list-group">
-   <app-post-list-item *ngFor="let post of posts"
+<h2>Posts</h2>
+<div class="alert alert-info">
+  Les posts utilisent un backend Firebase et donc peuvent être créés/supprimés par tous les testeurs/correcteurs.
+</div>
+<ul *ngIf="posts.length" class="list-group">
+   <app-post-list-item *ngFor="let post of posts; let id = index"
+                       [id]=id
                        [postTitle]="post.title"
                        [postContent]="post.content"
                        [postLoveIts]="post.loveIts"
-                       [postCreatedAt]="post.created_at"></app-post-list-item>
+                       [postCreatedAt]="post.createdAt"></app-post-list-item>
 </ul>
+<div *ngIf="!posts.length">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+
+      <div class="alert alert-info">
+        Oups, il n'y a pas encore de post où alors ils arrivent  ...
+      </div>
+      <div>
+        <button class="btn btn-success" type="button" [routerLink]="['/new']">Créer votre premier post
+      </button>
+      </div>
+    </div>
+  </div>
+</div>
 

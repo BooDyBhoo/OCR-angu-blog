@@ -1,28 +1,35 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {BlogService} from '../services/blog.service';
 
 @Component({
   selector: 'app-post-list-item',
   templateUrl: './post-list-item.component.html',
   styleUrls: ['./post-list-item.component.css']
 })
+
 export class PostListItemComponent implements OnInit {
 
-  @Input() posts: any;
+  @Input() id: number;
+  @Input() postTitle: string;
+  @Input() postContent: string;
+  @Input() postLoveIts: number;
+  @Input() postCreatedAt: string;
 
-  constructor() { }
-
-  onVote(id: number, vote: string) {
-    if (vote === 'up') {
-      this.posts[id].loveIts ++;
-    } else if (vote === 'down') {
-      this.posts[id].loveIts --;
-    } else  {
-      console.log('no vote');
-    }
-    console.log(this.posts[id].loveIts);
-  }
+  constructor(private blogService: BlogService) { }
 
   ngOnInit() {
+  }
+
+  onVote(id: number, vote: string) {
+   this.blogService.onVote(id, vote);
+  }
+
+  getLoveIt() {
+    return this.postLoveIts;
+  }
+
+  onDeletePost(id: number) {
+    this.blogService.removePost(id);
   }
 
 }
